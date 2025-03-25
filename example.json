@@ -1,0 +1,10 @@
+[
+  { "date": "2024-02-03", "type": "open", "name": "Assets:Checking" },
+  { "date": "2024-02-03", "type": "open", "name": "Assets:Cash" },
+  {
+    "date": "2024-02-04",
+    "type": "transaction",
+    "from": "Assets:Cash",
+    "to": "Assets:Checking"
+  }
+]
