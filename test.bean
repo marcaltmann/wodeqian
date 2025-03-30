@@ -1,0 +1,7 @@
+2024-01-01 open Assets:Bank
+
+2024-01-01 open Equity:Opening-Balances
+
+2024-01-01 * "Opening Balance"
+  Assets:Bank  1000.00 USD
+  Equity:Opening-Balances

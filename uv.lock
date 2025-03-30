@@ -44,6 +44,15 @@ wheels = [
 ]
 
 [[package]]
+name = "mt-940"
+version = "4.30.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c4/bd/11a984d1896516b4cb45df899b1f9d520df1a5e51a7f5b92ad35f5c2a560/mt-940-4.30.0.tar.gz", hash = "sha256:da14e2ec84d6c6e85604d2a6b8a800b08ec6000351acde501c41eb662819295c", size = 21828 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/49/86/c0baa3dcac450f784f776e5f245805da14c12f5caa26bfbb03710eb46582/mt_940-4.30.0-py2.py3-none-any.whl", hash = "sha256:66fa0c1e942478fd7970b791be017b1ca46556f54d44115008f3982e97ae0a9b", size = 20351 },
+]
+
+[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -108,6 +117,9 @@ wheels = [
 name = "wodeqian"
 version = "0.1.0"
 source = { virtual = "." }
+dependencies = [
+    { name = "mt-940" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -116,6 +128,7 @@ dev = [
 ]
 
 [package.metadata]
+requires-dist = [{ name = "mt-940", specifier = ">=4.30.0" }]
 
 [package.metadata.requires-dev]
 dev = [
