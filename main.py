@@ -15,7 +15,7 @@ def convert_transaction(transaction: Transaction) -> list:
 
 
 def main():
-    transactions = mt940.parse("/home/marc/umsaetze.sta")
+    transactions = mt940.parse("transactions.sta")
 
     for transaction in transactions:
         pprint.pprint(convert_transaction(transaction))
