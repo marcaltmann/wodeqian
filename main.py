@@ -5,6 +5,9 @@ import mt940
 from mt940.models import Transaction
 
 
+ACCOUNT_TYPES = ["Assets", "Liabilities", "Equity", "Income", "Expenses"]
+
+
 def convert_transaction(transaction: Transaction) -> list:
     return {
         "date": transaction.data["date"],
@@ -14,28 +17,19 @@ def convert_transaction(transaction: Transaction) -> list:
     }
 
 
+def format_transaction(transaction: list) -> str:
+    date = transaction["date"].strftime("%Y-%m-%d")
+    purpose = f'{transaction["applicant"]}: {transaction["purpose"]}'
+    return f'{date} * "{purpose}"\n\n'
+
+
 def main():
     transactions = mt940.parse("transactions.sta")
 
-    for transaction in transactions:
-        pprint.pprint(convert_transaction(transaction))
-
-    with open("transactions.csv", "w", newline="") as csvfile:
-        spamwriter = csv.writer(
-            csvfile, delimiter=",", quotechar="|", quoting=csv.QUOTE_MINIMAL
-        )
-        spamwriter.writerow(["Date", "Amount", "Applicant", "Purpose"])
-
+    with open("transactions.bean", "w", newline="") as f:
         for transaction in transactions:
-            converted = convert_transaction(transaction)
-            spamwriter.writerow(
-                [
-                    converted["date"],
-                    converted["amount"],
-                    converted["applicant"],
-                    converted["purpose"],
-                ]
-            )
+            line = format_transaction(convert_transaction(transaction))
+            f.write(line)
 
 
 if __name__ == "__main__":

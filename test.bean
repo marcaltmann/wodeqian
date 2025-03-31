@@ -2,6 +2,7 @@
 
 2024-01-01 open Equity:Opening-Balances
 
+; Konto eröffnen
 2024-01-01 * "Opening Balance"
   Assets:Bank  1000.00 USD
   Equity:Opening-Balances
