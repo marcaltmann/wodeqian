@@ -10,6 +10,8 @@ wheels/
 .venv
 
 # Other stuff
-transactions.sta
-transactions.csv
+transactions_real.json
 transactions.bean
+transactions.csv
+transactions.json
+transactions.sta
