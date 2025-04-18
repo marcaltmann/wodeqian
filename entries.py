@@ -2,9 +2,10 @@ import click
 
 VERSION = "0.1.0"
 
+
 @click.command()
 @click.option("-f", "--file", type=click.File("rb"), required=True, help="Ledger file.")
-@click.option("-l", "--limit", type=int, help='Number of entries.')
+@click.option("-l", "--limit", type=int, help="Number of entries.")
 @click.version_option(VERSION)
 def cli(file, limit):
     """Print entries from the ledger."""
@@ -15,5 +16,6 @@ def cli(file, limit):
 
     print(file.name)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     cli(auto_envvar_prefix="WODEQIAN")
