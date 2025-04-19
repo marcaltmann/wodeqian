@@ -1,6 +1,18 @@
+from datetime import date
+from decimal import Decimal
+import json
+
 import click
 
 VERSION = "0.1.0"
+
+def process_json(transaction: dict) -> dict:
+    return {
+        "date": date.fromisoformat(transaction["date"]),
+        "amount": Decimal(transaction["amount"]),
+        "applicant": transaction["applicant"],
+        "purpose": transaction["purpose"],
+    }
 
 
 @click.command()
@@ -9,12 +21,16 @@ VERSION = "0.1.0"
 @click.version_option(VERSION)
 def cli(file, limit):
     """Print entries from the ledger."""
-    if limit is None:
-        click.echo(f"There is no limit.")
-    else:
-        click.echo(f"The limit is {limit}.")
+    try:
+        raw_transactions = json.load(file)
+    except json.decoder.JSONDecodeError:
+        click.echo("The provided file is not a valid JSON file.", err=True)
+        exit()
 
-    print(file.name)
+    transactions = [process_json(t) for t in raw_transactions]
+
+    for t in transactions:
+        print(f"{t["date"]} {t["amount"]}€ {t["applicant"]} {t["purpose"]}")
 
 
 if __name__ == "__main__":
