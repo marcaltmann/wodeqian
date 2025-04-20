@@ -4,15 +4,18 @@ import json
 
 import click
 
+from transactions import Transaction
+
 VERSION = "0.1.0"
 
-def process_json(transaction: dict) -> dict:
-    return {
-        "date": date.fromisoformat(transaction["date"]),
-        "amount": Decimal(transaction["amount"]),
-        "applicant": transaction["applicant"],
-        "purpose": transaction["purpose"],
-    }
+
+def process_json(transaction: dict) -> Transaction:
+    return Transaction(
+        date=date.fromisoformat(transaction["date"]),
+        amount=Decimal(transaction["amount"]),
+        applicant=transaction["applicant"],
+        purpose=transaction["purpose"],
+    )
 
 
 @click.command()
@@ -30,7 +33,7 @@ def cli(file, limit):
     transactions = [process_json(t) for t in raw_transactions]
 
     for t in transactions:
-        print(f"{t["date"]} {t["amount"]}€ {t["applicant"]} {t["purpose"]}")
+        print(t)
 
 
 if __name__ == "__main__":
