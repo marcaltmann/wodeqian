@@ -9,15 +9,6 @@ from transactions import Transaction
 VERSION = "0.1.0"
 
 
-def process_json(transaction: dict) -> Transaction:
-    return Transaction(
-        date=date.fromisoformat(transaction["date"]),
-        amount=Decimal(transaction["amount"]),
-        applicant=transaction["applicant"],
-        purpose=transaction["purpose"],
-    )
-
-
 @click.command()
 @click.option("-f", "--file", type=click.File("rb"), required=True, help="Ledger file.")
 @click.option("-l", "--limit", type=int, help="Number of entries.")
@@ -30,7 +21,7 @@ def cli(file, limit):
         click.echo("The provided file is not a valid JSON file.", err=True)
         exit()
 
-    transactions = [process_json(t) for t in raw_transactions]
+    transactions = [Transaction.from_json_dict(t) for t in raw_transactions]
 
     for t in transactions:
         print(t)
