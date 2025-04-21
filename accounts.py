@@ -1,5 +1,6 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import StrEnum
+from typing import Optional, Self
 
 
 class AccountType(StrEnum):
@@ -14,8 +15,12 @@ class AccountType(StrEnum):
 @dataclass
 class Account:
     """Represents accounts."""
-    type: AccountType
     name: str
+    parent: Optional[Self] = None
+    children: Optional[list[Self]] = field(default_factory=list)
 
     def __str__(self):
-        return f"{self.type}:{self.name}"
+        if self.parent:
+            return f"{self.parent}:{self.name}"
+        else:
+            return self.name
