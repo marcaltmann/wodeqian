@@ -20,7 +20,7 @@ class Transaction:
     def as_json_dict(self) -> dict:
         return {
             "date": str(self.date),
-            "amount": float(self.amount),
+            "amount": str(self.amount),
             "applicant": self.applicant,
             "purpose": self.purpose,
         }

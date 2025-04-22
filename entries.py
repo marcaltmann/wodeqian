@@ -22,8 +22,14 @@ def cli(file, limit):
         exit()
 
     transactions = [Transaction.from_json_dict(t) for t in raw_transactions]
+    transactions.reverse()
 
-    for t in transactions:
+    if limit:
+        actual_transactions = transactions[:limit]
+    else:
+        actual_transactions = transactions
+
+    for t in actual_transactions:
         print(t)
 
 
