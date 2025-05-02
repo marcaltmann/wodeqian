@@ -13,7 +13,7 @@ class Account:
 
 
 @dataclass
-class SubTransaction:
+class Posting:
     """Represents a part of a transaction."""
 
     account: Account
@@ -28,7 +28,7 @@ class Transaction:
     amount: Decimal
     applicant: str
     purpose: str
-    sub_transactions: list[SubTransaction] = field(default_factory=list)
+    postings: list[Posting] = field(default_factory=list)
     tags: list[str] = field(default_factory=list)
 
     def __str__(self) -> str:
