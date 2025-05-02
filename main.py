@@ -4,6 +4,7 @@ import mt940
 
 from transactions import Transaction
 
+
 def main():
     transactions = mt940.parse("transactions.sta")
 

@@ -5,6 +5,7 @@ from typing import Optional, Self
 
 class AccountType(StrEnum):
     """Represents the five account types."""
+
     ASSETS = "Assets"
     LIABILITIES = "Liabilities"
     EQUITY = "Equity"
@@ -15,6 +16,7 @@ class AccountType(StrEnum):
 @dataclass
 class Account:
     """Represents accounts."""
+
     name: str
     parent: Optional[Self] = None
     children: Optional[list[Self]] = field(default_factory=list)
