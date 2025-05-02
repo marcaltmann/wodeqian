@@ -4,6 +4,21 @@ from decimal import Decimal
 
 from mt940.models import Transaction as Mt940Transaction
 
+@dataclass
+class Account:
+    """Represents an account in the double book-keeping sense."""
+
+    label: str
+    balance: Decimal = 0.00
+
+
+@dataclass
+class SubTransaction:
+    """Represents a part of a transaction."""
+
+    account: Account
+    amount: Decimal | None = None
+
 
 @dataclass
 class Transaction:
@@ -13,6 +28,7 @@ class Transaction:
     amount: Decimal
     applicant: str
     purpose: str
+    sub_transactions: list[SubTransaction] = field(default_factory=list)
     tags: list[str] = field(default_factory=list)
 
     def __str__(self) -> str:
