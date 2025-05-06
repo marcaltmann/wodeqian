@@ -24,7 +24,8 @@ class Posting:
 class Transaction:
     """Class for keeping track of a transaction."""
 
-    date: date
+    value_date: date
+    entry_date: date
     amount: Decimal
     applicant: str
     purpose: str
@@ -32,18 +33,19 @@ class Transaction:
     tags: list[str] = field(default_factory=list)
 
     def __str__(self) -> str:
-        return f"{self.date} {self.amount}€ {self.applicant} {self.purpose}"
+        return f"{self.entry_date} {self.amount}€ {self.applicant} {self.purpose}"
 
     def as_json_dict(self) -> dict:
         return {
-            "date": str(self.date),
+            "value_date": str(self.value_date),
+            "entry_date": str(self.entry_date),
             "amount": str(self.amount),
             "applicant": self.applicant,
             "purpose": self.purpose,
         }
 
     def format_bean(self) -> str:
-        date_str = self.date.strftime("%Y-%m-%d")
+        date_str = self.entry_date.strftime("%Y-%m-%d")
         first_line = f'{date_str} * "{self.applicant}" "{self.purpose}"'
         first_line += self.format_tags() if self.tags else ""
         lines = [
@@ -60,17 +62,21 @@ class Transaction:
     @classmethod
     def from_mt940(cls, transaction: Mt940Transaction):
         transaction1 = cls(
-            date=transaction.data["date"],
+            value_date=transaction.data["date"],
+            entry_date=transaction.data["entry_date"],
             amount=transaction.data["amount"].amount,
             applicant=transaction.data["applicant_name"],
             purpose=transaction.data["purpose"],
         )
+        if (transaction1.entry_date != transaction1.value_date):
+            print(transaction1)
         return transaction1
 
     @classmethod
     def from_json_dict(cls, transaction: dict):
         transaction1 = cls(
-            date=date.fromisoformat(transaction["date"]),
+            value_date=date.fromisoformat(transaction["value_date"]),
+            entry_date=date.fromisoformat(transaction["entry_date"]),
             amount=Decimal(transaction["amount"]),
             applicant=transaction["applicant"],
             purpose=transaction["purpose"],

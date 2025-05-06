@@ -13,6 +13,7 @@ wheels/
 # Other stuff
 transactions_real.json
 transactions_real.bean
+transactions_real_edited.bean
 transactions.bean
 transactions.csv
 transactions.json
