@@ -50,8 +50,8 @@ class Transaction:
         first_line += self.format_tags() if self.tags else ""
         lines = [
             first_line,
-            f"  Assets:Checking",
-            f"  Expenses:Misc  {self.amount} EUR",
+            f"  Aktiva:Girokonto",
+            f"  Ausgaben:Sonstiges  {self.amount} EUR",
         ]
         return "\n".join(lines) + "\n\n"
 
