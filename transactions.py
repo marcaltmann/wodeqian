@@ -51,7 +51,7 @@ class Transaction:
         lines = [
             first_line,
             f"  Aktiva:Girokonto",
-            f"  Ausgaben:Sonstiges  {self.amount} EUR",
+            f"  Ausgaben:Sonstiges  {-self.amount} EUR",
         ]
         return "\n".join(lines) + "\n\n"
 

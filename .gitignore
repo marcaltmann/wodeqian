@@ -18,3 +18,5 @@ transactions.bean
 transactions.csv
 transactions.json
 transactions.sta
+today.bean
+current.bean
