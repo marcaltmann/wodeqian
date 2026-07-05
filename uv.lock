@@ -4,14 +4,14 @@ requires-python = ">=3.14"
 
 [[package]]
 name = "click"
-version = "8.3.2"
+version = "8.4.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/57/75/31212c6bf2503fdf920d87fee5d7a86a2e3bcf444984126f13d8e4016804/click-8.3.2.tar.gz", hash = "sha256:14162b8b3b3550a7d479eafa77dfd3c38d9dc8951f6f69c78913a8f9a7540fd5", size = 302856, upload-time = "2026-04-03T19:14:45.118Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/76/d4/81420972a676e8ffea40450d8c8c92943e7218a78fe9b64359836cc9876b/click-8.4.2.tar.gz", hash = "sha256:9a6cea6e60b17ebe0a44c5cc636d94f09bd66142c1cd7d8b4cd731c4917a15f6", size = 338000, upload-time = "2026-06-24T17:45:15.148Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e4/20/71885d8b97d4f3dde17b1fdb92dbd4908b00541c5a3379787137285f602e/click-8.3.2-py3-none-any.whl", hash = "sha256:1924d2c27c5653561cd2cae4548d1406039cb79b858b747cfea24924bbc1616d", size = 108379, upload-time = "2026-04-03T19:14:43.505Z" },
+    { url = "https://files.pythonhosted.org/packages/fb/e2/79c688af8b210d232694e31e59da9f6ec747bae31c3f5946e4e9b98860d5/click-8.4.2-py3-none-any.whl", hash = "sha256:e6f9f66136c816745b9d65817da91d61d957fb16e02e4dcd0552553c5a197b76", size = 119243, upload-time = "2026-06-24T17:45:13.73Z" },
 ]
 
 [[package]]
@@ -25,11 +25,11 @@ wheels = [
 
 [[package]]
 name = "mt-940"
-version = "4.30.0"
+version = "5.0.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c4/bd/11a984d1896516b4cb45df899b1f9d520df1a5e51a7f5b92ad35f5c2a560/mt-940-4.30.0.tar.gz", hash = "sha256:da14e2ec84d6c6e85604d2a6b8a800b08ec6000351acde501c41eb662819295c", size = 21828, upload-time = "2023-04-13T11:06:15.264Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/aa/64/39abc6f3967663760943afd13e46908cf422299e784cb012127031987140/mt_940-5.0.0.tar.gz", hash = "sha256:82d914988837a95bae21e772c74fb925b716735723f718c3ddd93cf3ad2b0f3a", size = 26138, upload-time = "2026-06-22T01:16:12.936Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/49/86/c0baa3dcac450f784f776e5f245805da14c12f5caa26bfbb03710eb46582/mt_940-4.30.0-py2.py3-none-any.whl", hash = "sha256:66fa0c1e942478fd7970b791be017b1ca46556f54d44115008f3982e97ae0a9b", size = 20351, upload-time = "2023-04-13T11:06:13.252Z" },
+    { url = "https://files.pythonhosted.org/packages/4e/9c/b9f58c0cc2058476c75d5106fbf0b76b894346038abdbbb12d8fd4ec129f/mt_940-5.0.0-py3-none-any.whl", hash = "sha256:731ad50dd74bd9b4c74c7baab62dead534e30867ef00217841060dd7a7e3201a", size = 29133, upload-time = "2026-06-22T01:16:11.754Z" },
 ]
 
 [[package]]
@@ -43,8 +43,8 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "click", specifier = ">=8.2.1" },
-    { name = "mt-940", specifier = ">=4.30.0" },
+    { name = "click", specifier = "~=8.4.2" },
+    { name = "mt-940", specifier = "~=5.0.0" },
 ]
 
 [package.metadata.requires-dev]
